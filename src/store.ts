@@ -25,3 +25,17 @@ export function remove(todos: Todo[], id: number): Todo[] {
 export function toggle(todos: Todo[], id: number): Todo[] {
   return todos.map((todo) => todo.id === id ? { ...todo, done: !todo.done, updatedAt: new Date().toISOString() } : todo);
 }
+//모두 완료
+export function markAllDone(todos: Todo[]): Todo[] {
+  const now = new Date().toISOString();
+  return todos.map((todo) => ({ ...todo, done: true, updatedAt: now }));
+}
+//모두 해제
+export function unmarkAllDone(todos: Todo[]): Todo[] {
+  //const now = new Date().toISOString();
+  return todos.map((todo) => ({ ...todo, done: false}));
+}
+//남은 할일 개수
+export function countRemaining(todos: Todo[]): number {
+  return todos.filter((todo) => !todo.done).length;
+}

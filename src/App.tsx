@@ -34,9 +34,9 @@ function App() {
       <h1>My Todo App</h1>
       <TodoForm onAdd={(newTodo) => setTodos(S.add(todos, newTodo))} />  
       <hr />
-      <button>모두 완료</button>
-      <button>모두 해제</button>
-      남은 할일 개수:
+      <button onClick={() => setTodos(S.markAllDone(todos))}>모두 완료</button>
+      <button onClick={() => setTodos(S.unmarkAllDone(todos))}>모두 해제</button>
+      남은 할일 개수: {S.countRemaining(todos)} 
       <hr />
       <div>
         {
