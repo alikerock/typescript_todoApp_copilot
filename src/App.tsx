@@ -3,6 +3,7 @@ import TodoForm from "./components/TodoForm";
 import * as S from "./store"; 
 import { useEffect, useState } from "react";
 import type { Todo } from "./types";
+import TodoItem from "./components/TodoItem";
 
 //로컬스토리지에서 할일 불러오기
 function load(): Todo[] {
@@ -30,6 +31,19 @@ function App() {
     <>
       <h1>My Todo App</h1>
       <TodoForm onAdd={(newTodo) => setTodos(S.add(todos, newTodo))} />  
+      <hr />
+      <div>
+        {
+        todos.map(todo => 
+          <TodoItem 
+            key={todo.id} 
+            todo={todo} 
+            onToggle={() => setTodos(S.toggle(todos, todo.id))}
+            onUpdate={patch => setTodos(S.update(todos, todo.id, patch))}
+            onRemove={() => setTodos(S.remove(todos, todo.id))}
+          />
+        )}
+      </div>
     </>
   )
 }
