@@ -26,6 +26,8 @@ function App() {
   useEffect(() => {
     save(todos);
   }, [todos]);
+
+  console.log(todos);
   
   return (
     <>
