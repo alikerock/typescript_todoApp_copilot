@@ -28,11 +28,15 @@ function App() {
   }, [todos]);
 
   console.log(todos);
-  
+
   return (
     <>
       <h1>My Todo App</h1>
       <TodoForm onAdd={(newTodo) => setTodos(S.add(todos, newTodo))} />  
+      <hr />
+      <button>모두 완료</button>
+      <button>모두 해제</button>
+      남은 할일 개수:
       <hr />
       <div>
         {
